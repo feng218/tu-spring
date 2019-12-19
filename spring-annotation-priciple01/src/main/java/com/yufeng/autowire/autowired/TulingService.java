@@ -2,6 +2,7 @@ package com.yufeng.autowire.autowired;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 /**
@@ -11,20 +12,21 @@ import org.springframework.stereotype.Component;
 public class TulingService {
 
     @Autowired
-    private DaoInterface tulingDao1;
+    //@Qualifier("tulingDao")
+    private DaoInterface tulingDao;
 
     public DaoInterface getTulingDao() {
-        return tulingDao1;
+        return tulingDao;
     }
 
     public void setTulingDao(TulingDao tulingDao) {
-        this.tulingDao1 = tulingDao;
+        this.tulingDao = tulingDao;
     }
 
     @Override
     public String toString() {
         return "TulingService{" +
-                "tulingDao=" + tulingDao1 +
+                "tulingDao=" + tulingDao +
                 '}';
     }
 

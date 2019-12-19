@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
  * Created by smlz on 2019/5/24.
  */
 @Configuration
-@ComponentScan(basePackages = {"com.yufeng.autowired.autowired"})
+@ComponentScan(basePackages = {"com.yufeng.autowire.autowired"})
 public class MainConfig {
     @Bean
     public TulingDao tulingDao() {
