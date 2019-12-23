@@ -14,12 +14,10 @@ public class NettyClientHandler extends ChannelInboundHandlerAdapter {
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
         System.out.println("MyClientHandler发送数据");
         //ctx.writeAndFlush("测试String编解码");
-
         //测试对象编解码
-        ctx.writeAndFlush(new User(1,"zhuge"));
+        //ctx.writeAndFlush(new User(1,"zhuge"));
 
         //测试自定义Long数据编解码器
-        //ctx.writeAndFlush(1000L);
-
+        ctx.writeAndFlush(1000L);
     }
 }

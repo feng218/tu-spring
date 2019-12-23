@@ -8,10 +8,10 @@ public class NettyServerHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         //System.out.println("从客户端读取到String：" + msg.toString());
-        System.out.println("从客户端读取到Object：" + ((User)msg).toString());
-        //System.out.println("从客户端读取到Long：" + (Long)msg);
+        //System.out.println("从客户端读取到Object：" + ((User)msg).toString());
+        System.out.println("从客户端读取到Long：" + (Long)msg);
         //给客户端发回一个long数据
-        //ctx.writeAndFlush(2000L);
+        ctx.writeAndFlush(2000L);
     }
 
     @Override

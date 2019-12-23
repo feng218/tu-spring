@@ -25,9 +25,9 @@ public class NettyServer {
                         protected void initChannel(SocketChannel ch) throws Exception {
                             ChannelPipeline pipeline = ch.pipeline();
                             //pipeline.addLast(new StringDecoder());
-                            pipeline.addLast(new ObjectDecoder(Integer.MAX_VALUE, ClassResolvers.cacheDisabled(null)));
-                            //pipeline.addLast(new ByteToLongDecoder());
-                            //pipeline.addLast(new LongToByteEncoder());
+                            //pipeline.addLast(new ObjectDecoder(Integer.MAX_VALUE, ClassResolvers.cacheDisabled(null)));
+                            pipeline.addLast(new ByteToLongDecoder());
+                            pipeline.addLast(new LongToByteEncoder());
                             pipeline.addLast(new NettyServerHandler());
                         }
                     });

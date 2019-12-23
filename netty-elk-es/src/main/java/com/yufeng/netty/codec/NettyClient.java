@@ -22,9 +22,9 @@ public class NettyClient {
                         protected void initChannel(SocketChannel ch) throws Exception {
                             ChannelPipeline pipeline = ch.pipeline();
                             //pipeline.addLast(new StringEncoder());
-                            pipeline.addLast(new ObjectEncoder());
-                            //pipeline.addLast(new LongToByteEncoder());
-                            //pipeline.addLast(new ByteToLongDecoder());
+                            //pipeline.addLast(new ObjectEncoder());
+                            pipeline.addLast(new LongToByteEncoder());
+                            pipeline.addLast(new ByteToLongDecoder());
                             pipeline.addLast(new NettyClientHandler());
                         }
                     });
