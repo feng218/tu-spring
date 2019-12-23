@@ -6,6 +6,8 @@ import io.netty.channel.ChannelInitializer;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
+import io.netty.handler.codec.string.StringDecoder;
+import io.netty.handler.codec.string.StringEncoder;
 
 import java.util.Scanner;
 
@@ -23,7 +25,10 @@ public class ChatClient
                 .handler(new ChannelInitializer<SocketChannel>() {
                     @Override
                     protected void initChannel(SocketChannel ch) throws Exception {
-                        ch.pipeline().addLast(new ChatClientHandler());
+                        ch.pipeline()
+                                .addLast("decoder", new StringDecoder())
+                                .addLast("encoder", new StringEncoder())
+                                .addLast(new ChatClientHandler());
                     }
                 });
 

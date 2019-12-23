@@ -48,7 +48,7 @@ public class ChatServerHandler extends SimpleChannelInboundHandler<String>
                         + format.format(new Date()));
             }
             else {
-                System.out.println("[ 自己 ]发送了消息: " + msg + format.format(new Date()));
+                ch.writeAndFlush("[ 自己 ]发送了消息: " + msg + format.format(new Date()));
             }
         });
     }

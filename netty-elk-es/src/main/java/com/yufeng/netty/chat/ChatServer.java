@@ -8,6 +8,8 @@ import io.netty.channel.ChannelOption;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
+import io.netty.handler.codec.string.StringDecoder;
+import io.netty.handler.codec.string.StringEncoder;
 
 
 /**
@@ -33,7 +35,10 @@ public class ChatServer
                     @Override
                     protected void initChannel(SocketChannel ch) throws Exception
                     {
-                        ch.pipeline().addLast(new ChatServerHandler());
+                        ch.pipeline()
+                                .addLast("decoder", new StringDecoder())
+                                .addLast("encoder", new StringEncoder())
+                                .addLast(new ChatServerHandler());
                     }
                 });
 
